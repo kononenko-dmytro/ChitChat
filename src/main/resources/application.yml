@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active: local-dev
+
+server:
+  port: 8081
+
+---
+spring.profiles: local-dev
+spring:
+  profiles:
+    include: local-postgresql-credentials,debug
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/chitchatdb
+    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+---
+spring:
+  profiles: local-postgresql-credentials
+  datasource:
+    username: postgres
+    password: 123
+
+---
+spring:
+  profiles: debug
+logging:
+  level:
+    com.example.chitchat: debug
