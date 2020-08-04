@@ -28,7 +28,7 @@ public class User {
     private Set<Chat> chats;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "sender")
-    private Set<Message> qssages;
+    private Set<Message> messages;
 
     public Long getId() {
         return id;
